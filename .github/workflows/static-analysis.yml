@@ -42,6 +42,11 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress --prefer-dist --no-interaction
 
+      - name: Set permissions for Laravel directories
+        run: |
+          mkdir -p bootstrap/cache
+          chmod -R 777 bootstrap/cache
+          chmod -R 777 storage
       # ---------- Run Tests ----------
       - name: Run tests
         run: php artisan test
